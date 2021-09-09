@@ -36,7 +36,7 @@ def get_tasks():
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"), # The host will be set to the IP, so we need to type os.environ.get("IP") in order to fetch that default value, which was "0.0.0.0"
             port=int(os.environ.get("PORT")), # The port will need to be converted to an integer, so we'll type: int(os.environ.get("PORT"))
-            debug = True) # The final parameter will be debug=True, because during development, we want to see the actual errors that may appear, instead of a generic server warning
+            debug=True) # The final parameter will be debug=True, because during development, we want to see the actual errors that may appear, instead of a generic server warning
 
 
 # I need to setup some files that Heroku needs to run the app. First, I need to tell Heroku 
