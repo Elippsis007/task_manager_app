@@ -1,18 +1,14 @@
 {% extends "base.html" %}
-<!-- Tell the base template which block element we're injected our code into,
-and in our case, it's {% block content %} -->
-<!-- Inject the contents of this page, directly into our base template -->
 {% block content %} 
 
-    <h2>I'm extending the base template</h2>
-<!-- use the Jinja templating language to loop through each task item from within our collection --> 
-<!-- The . notation is used on each of these fields to target each key -->  <!-- Display the contents of each field that's in our database -->     
-{% for task in tasks %} 
-        {{ task.task_name }}<br> 
+    <h2>I'm extending the base template!</h2>
+         
+    {% for task in tasks %}
+        {{ task.task_name }}<br>
         {{ task.category_name }}<br>
         {{ task.task_description }}<br>
         {{ task.is_urgent }}<br>
-        {{ task.due_date }}<br>  
+        {{ task.due_date }}<br>
     {% endfor %}
 
 {% endblock %}

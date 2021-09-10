@@ -1,0 +1,6 @@
+Tell the base template which block element we're injected our code into,
+and in our case, it's {% block content %}
+Inject the contents of this page, directly into our base template
+
+Use the Jinja templating language to loop through each task item from within our collection --> 
+The . notation is used on each of these fields to target each key. Display the contents of each field that's in our database -->
