@@ -7,6 +7,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env 
 
@@ -37,6 +38,12 @@ def get_tasks():
     # This tasks template, I want to be able to generate data from my tasks collection on MongoDB, visible to our users
     # The first 'tasks' is what the template will use, and that's equal to the second 'tasks'
     return render_template("tasks.html", tasks=tasks) 
+
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    return render_template("register.html")
+
                                         
 
 # The host will be set to the IP, so we need to type os.environ.get("IP") in order to fetch that default value, which was "0.0.0.0"
