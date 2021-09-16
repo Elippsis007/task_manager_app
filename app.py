@@ -34,7 +34,7 @@ mongo = PyMongo(app)
 @app.route("/get_tasks")
 def get_tasks():
     # This will find all documents from the tasks collection, and assign them to our new 'tasks' variable.
-    tasks = mongo.db.tasks.find() 
+    tasks = list(mongo.db.tasks.find()) 
     # This tasks template, I want to be able to generate data from my tasks collection on MongoDB, visible to our users
     # The first 'tasks' is what the template will use, and that's equal to the second 'tasks'
     return render_template("tasks.html", tasks=tasks) 
