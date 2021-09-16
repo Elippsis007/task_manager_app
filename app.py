@@ -114,6 +114,11 @@ def logout():
     return redirect(url_for("login"))
 
 
+@app.route("/add_task")
+def add_task():
+    return render_template("add_task.html")
+
+
 # The host will be set to the IP, so we need to type os.environ.get("IP") in order to fetch that default value, which was "0.0.0.0"
 # The port will need to be converted to an integer, so we'll type: int(os.environ.get("PORT"))
 # The final parameter will be debug=True, because during development, we want to see the actual errors that may appear, instead of a generic server warning
