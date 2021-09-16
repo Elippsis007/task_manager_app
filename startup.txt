@@ -1,5 +1,6 @@
 pip3 install flask
 pip3 install pymongo
+python -m pip install "pymongo[srv]"
 pip3 install dnspython
 pip3 install flask_pymongo
 
