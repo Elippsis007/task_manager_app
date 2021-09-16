@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block content %} 
+{% block content %}
 
     <h3 class="blue-text text-lighten-2 center-align">All Tasks</h3>
 
@@ -7,19 +7,17 @@
         {% for task in tasks %}
         <li>
             <div class="collapsible-header white-text blue lighten-2 text-shadow">
-                <div class="col-s3">
-                <i class="fas fa-caret-down"></i> 
-                <a href="" class="btn-small green accent-4">Done</a>
-                <a href="{{ url_for('edit_task', task_id=task._id) }}" class="btn-small orange lighten-2">Edit</a>
+                <div class="col s3">
+                    <i class="fas fa-caret-down"></i>
+                    <a href="" class="btn-small green accent-4">Done</a>
+                    <a href="{{ url_for('edit_task', task_id=task._id) }}" class="btn-small orange lighten-2">Edit</a>
                 </div>
-                <div class="col-s9">
-                    
-                
-                <strong>{{ task.task_name }}</strong> : {{ task.due_date }}
-                {% if task.is_urgent == "on" %}
-                    <i class="fas fa-exclamation-circle red-text text-lighten-2 tooltipped"
-                    data-position="right" data-tooltip="URGENT!"></i>
-                {% endif %}
+                <div class="col s9">
+                    <strong>{{ task.task_name }}</strong> : {{ task.due_date }}
+                    {% if task.is_urgent == "on" %}
+                        <i class="fas fa-exclamation-circle red-text text-lighten-2 tooltipped"
+                            data-position="right" data-tooltip="URGENT!"></i>
+                    {% endif %}
                 </div>
             </div>
             <div class="collapsible-body">
