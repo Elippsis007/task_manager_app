@@ -165,6 +165,19 @@ def get_categories():
     categories = list(mongo.db.categories.find().sort("category_name", 1))
     return render_template("categories.html", categories=categories)
 
+
+@app.route("/add_category", methods=["GET", "POST"])
+def add_category():
+    if request.method == "POST": # If function is called using POST methond (Add Category)
+        category = {
+            "category_name": request.form.get("category_name") # Grab data from the form
+        }
+        mongo.db.categories.insert_one(category) # Then insert it inot our database
+        flash("New Category Added")
+        return redirect(url_for("get_categories"))
+
+    return render_template("add_category.html")
+
 # The host will be set to the IP, so we need to type os.environ.get("IP") in order to fetch that default value, which was "0.0.0.0"
 # The port will need to be converted to an integer, so we'll type: int(os.environ.get("PORT"))
 # The final parameter will be debug=True, because during development, we want to see the actual errors that may appear, instead of a generic server warning
