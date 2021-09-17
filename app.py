@@ -178,6 +178,20 @@ def add_category():
 
     return render_template("add_category.html")
 
+
+@app.route("/edit_category/<category_id>", methods=["GET", "POST"])
+def edit_category(category_id):
+    if request.method == "POST":
+        submit = {
+            "category_name": request.form.get("category_name")
+        }
+        mongo.db.categories.update({"_id": ObjectId(category_id)}, submit)
+        flash("Category Successfully Updated")
+        return redirect(url_for("get_categories"))
+
+    category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
+    return render_template("edit_category.html", category=category)
+
 # The host will be set to the IP, so we need to type os.environ.get("IP") in order to fetch that default value, which was "0.0.0.0"
 # The port will need to be converted to an integer, so we'll type: int(os.environ.get("PORT"))
 # The final parameter will be debug=True, because during development, we want to see the actual errors that may appear, instead of a generic server warning
