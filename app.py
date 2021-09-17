@@ -37,7 +37,14 @@ def get_tasks():
     tasks = list(mongo.db.tasks.find()) 
     # This tasks template, I want to be able to generate data from my tasks collection on MongoDB, visible to our users
     # The first 'tasks' is what the template will use, and that's equal to the second 'tasks'
-    return render_template("tasks.html", tasks=tasks) 
+    return render_template("tasks.html", tasks=tasks)
+
+
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    tasks = list(mongo.db.tasks.find({"$text": {"$search": query}}))
+    return render_template("tasks.html", tasks=tasks)
 
 
 @app.route("/register", methods=["GET", "POST"])
